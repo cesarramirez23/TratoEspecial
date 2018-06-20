@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TratoEspecial.V_Registro">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <!-- quitar el stack layout
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Top Left" HorizontalTextAlignment="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1"/>
+            <Switch Toggled="Cambio" IsToggled="False" Grid.Column="1" HorizontalOptions="CenterAndExpand" Grid.Row="0" Grid.ColumnSpan="3"  ></Switch>
+            <Label Text="Bottom Left" Grid.Row="1" Grid.Column="0" />
+            <Label Text="Bottom Right" Grid.Row="1" Grid.Column="1" />
+            -->
+                <Label Text="" x:Name="Persona"></Label>
+                <!--  Grid.Column="0" Grid.Row="0"-->
+                <Switch Toggled="Cambio" IsToggled="False" ></Switch>
+                <!--  Grid.Column="1" Grid.Row="0" -->
+                <Entry  Placeholder="Nombre completo"  Keyboard="Default" x:Name="nombre"></Entry>
+                <Entry  Placeholder="RFC"  Keyboard="Default" x:Name="rfc"  ></Entry>
+                <DatePicker  Format="D" x:Name="fecha"></DatePicker>
+                <Entry  Placeholder="Lugar Nacimiento"  Keyboard="Default" x:Name="lugar"></Entry>
+                <Entry  Placeholder="Ocupacion"  Keyboard="Default" x:Name="giro"></Entry>
+                <Entry  Placeholder="Telefono"  Keyboard="Numeric" x:Name="tel"></Entry>
+                <Entry  Placeholder="Celular"  Keyboard="Numeric" x:Name="cel"></Entry>
+                <Entry  Placeholder="Domicilio Calle"  Keyboard="Default" x:Name="dom"></Entry>
+                <Entry  Placeholder="Numero Exterior"  Keyboard="Numeric" x:Name="ext"></Entry>
+                <Entry  Placeholder="Numero Interior"  Keyboard="Numeric" x:Name="inte"></Entry>
+                <Entry  Placeholder="Colonia"  Keyboard="Default" x:Name="col"></Entry>
+                <Entry  Placeholder="Ciudad"  Keyboard="Default" x:Name="ciu"></Entry>
+                <Entry  Placeholder="Municipio"  Keyboard="Default" x:Name="mun"></Entry>
+                <Entry  Placeholder="Estado"  Keyboard="Default" x:Name="est"></Entry>
+                <Entry  Placeholder="Codigo Postal"  Keyboard="Numeric" x:Name="cp"></Entry>
+                <Entry  Placeholder="Correo Electronico"  Keyboard="Default" x:Name="correo"></Entry>
+                <Button x:Name="_boton"  BackgroundColor="Beige"  Text="Registrar" Clicked="Registrar" ></Button>
+                <Label x:Name="mensaje" Text="adsasadsgdgfdhfdsf"></Label>
+            </StackLayout>
+            <!-- </Grid>-->
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
