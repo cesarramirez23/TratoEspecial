@@ -9,24 +9,8 @@
     </ContentPage.ToolbarItems>
     <ScrollView>
         <StackLayout>
-            
-        <!-- quitar el stack layout
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Label Text="Top Left" HorizontalTextAlignment="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1"/>
-            <Switch Toggled="Cambio" IsToggled="False" Grid.Column="1" HorizontalOptions="CenterAndExpand" Grid.Row="0" Grid.ColumnSpan="3"  ></Switch>
-            <Label Text="Bottom Left" Grid.Row="1" Grid.Column="0" />
-            <Label Text="Bottom Right" Grid.Row="1" Grid.Column="1" />
-            -->
-            <Label Text="" x:Name="Persona"></Label>  <!--  Grid.Column="0" Grid.Row="0"-->
-            <Switch Toggled="Cambio" IsToggled="False" ></Switch>             <!--  Grid.Column="1" Grid.Row="0" -->
+            <Label Text="" x:Name="Persona"></Label>
+            <Switch Toggled="Cambio" IsToggled="False" ></Switch>
             <Entry  Placeholder="Nombre completo"  Keyboard="Default" x:Name="nombre"></Entry>
             <Entry  Placeholder="RFC"  Keyboard="Default" x:Name="rfc"></Entry>
             <DatePicker  Format="D" x:Name="fecha"></DatePicker>
@@ -46,6 +30,5 @@
             <Button x:Name="_boton"  BackgroundColor="Beige"  Text="Registrar" Clicked="Registrar" ></Button>
             <Label x:Name="mensaje" Text="adsafdsf"></Label>
         </StackLayout>
-        <!-- </Grid>-->
     </ScrollView>
 </ContentPage>

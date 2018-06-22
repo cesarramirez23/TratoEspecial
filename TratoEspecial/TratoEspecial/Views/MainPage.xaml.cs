@@ -10,20 +10,25 @@ namespace TratoEspecial.Views
 	{
 		public MainPage ()
 		{
+            //NavigationPage.SetHasNavigationBar(this, false);
 			InitializeComponent ();
 		}
         public async void Fn_Log(object sender, EventArgs _args)
         {
-            await Navigation.PushAsync(new NavigationPage(new V_Login()));
+            //Page newPage = new V_Login();
+            //Application.Current.MainPage =new NavigationPage( new V_Login());
+            await Navigation.PushAsync(new NavigationPage(new V_Login()) { Title = "Login" });
         }
-        public async void Fn_Reg(object sender, EventArgs _args)
+        public async  void Fn_Reg(object sender, EventArgs _args)
         {
-            await Navigation.PushAsync(new NavigationPage(new V_Registro()));
+            //Application.Current.MainPage = new NavigationPage(new  V_Registro());
+            await Navigation.PushAsync(new NavigationPage(new V_Registro()) { Title ="REgistro"});
         }
-        public async void Fn_Info(object sender, EventArgs _args)
+        public  async void Fn_Info(object sender, EventArgs _args)
         {
-            //await Navigation.PushAsync(new NavigationPage(new V_Informacion()));
-            await Navigation.PushAsync(new NavigationPage(new V_Informacion(1)));
+
+            //Application.Current.MainPage = new NavigationPage(new V_Informacion());
+            await Navigation.PushAsync(new NavigationPage(new V_Informacion(1)) { Title = "Informacion" });
         }
 	}
 }

@@ -2,12 +2,29 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TratoEspecial.Views.V_Informacion">
-  <ContentPage.Content>
-      <StackLayout>
-            <ScrollView>
-                <Label x:Name="v_info" Text="" HorizontalOptions="CenterAndExpand" ></Label>
+   
+    <ContentPage.Content>
+        <!-- columnas vertical https://developer.telerik.com/topics/mobile-development/understanding-xamarin-forms-layouts/ Grid.ColumnSpan="1" Grid.Row="0" Grid.Column="0"-->
+        <StackLayout>
+            <ScrollView >
+                <Label x:Name="v_info" Text=""></Label>
             </ScrollView>
-            <Button x:Name="v_but" Text="Mas Informacion" Clicked="Fn_Info" ></Button>
-      </StackLayout>
+            <Button x:Name="v_but" Text="Mas Informacion" Clicked="Fn_Info"  ></Button>
+        </StackLayout>
+        <!-- 
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="15*"/>
+            </Grid.ColumnDefinitions>
+            <ScrollView Grid.ColumnSpan="1" VerticalOptions="Center" BackgroundColor="Green" Grid.Row="0" Grid.Column="0">
+            </ScrollView>
+            <Button x:Name="v_but" Text="Mas Informacion" Clicked="Fn_Info" Grid.ColumnSpan="2" BackgroundColor="Red"
+                    Grid.Row="0" Grid.Column="1"></Button>
+        </Grid>-->
   </ContentPage.Content>
 </ContentPage>

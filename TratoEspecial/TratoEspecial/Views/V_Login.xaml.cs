@@ -16,8 +16,11 @@ namespace TratoEspecial.Views
 	public partial class V_Login : ContentPage
 	{
         public Button _men;
-        
-		public V_Login ()
+        protected override void OnAppearing()
+        {
+            NavigationPage.SetHasNavigationBar(this, false);
+        }
+        public V_Login ()
 		{
             
 			InitializeComponent ();

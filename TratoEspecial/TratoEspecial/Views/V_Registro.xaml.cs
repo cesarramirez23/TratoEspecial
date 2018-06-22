@@ -18,11 +18,19 @@ namespace TratoEspecial
         /// true es fisico falso es moral
         /// </summary>
         public bool v_T_Persona = true;
+        protected override void OnAppearing()
+        {
+            NavigationPage.SetHasNavigationBar(this, false);
+        }
+        protected override void OnDisappearing()
+        {
+            NavigationPage.SetHasNavigationBar(this, false);
+        }
         public V_Registro()
         {
-            //IsVisible = "False" es para que no se vea y el enabled es para que no sea interactuable
             InitializeComponent();
-            Persona.Text = "Fisico";
+            
+            Persona.Text = "Persona Fisica";
             fecha.IsEnabled = v_T_Persona;
             lugar.IsEnabled = v_T_Persona;
             tel.IsEnabled = v_T_Persona;
@@ -35,18 +43,23 @@ namespace TratoEspecial
         public void Cambio(object sender, EventArgs args)
         {
             v_T_Persona = !v_T_Persona;
-            fecha.IsEnabled = v_T_Persona;
-            lugar.IsEnabled = v_T_Persona;
-            tel.IsEnabled = v_T_Persona;
             if (v_T_Persona)
             {
+                giro.Text = "";
                 giro.Placeholder = "Ocupacion";
-                Persona.Text = "Fisico";
+                Persona.Text = "Persona Fisica";
+                fecha.IsVisible = true;
+                lugar.IsVisible = true;
+                tel.IsVisible = true;
             }
             else
             {
+                tel.IsVisible = false;
+                fecha.IsVisible = false;
+                lugar.IsVisible = false;
+                giro.Text = "";
                 giro.Placeholder = "Giro de la empresa";
-                Persona.Text = "Moral";
+                Persona.Text = "Persona Moral";
             }
 
         }
@@ -74,7 +87,7 @@ namespace TratoEspecial
             var resultString = await result.Content.ReadAsStringAsync();
             var post = JsonConvert.DeserializeObject(resultString);
             //aca pones lo que regresa la base de datos
-            mensaje.Text = "info de regreso";
+           // mensaje.Text = "info de regreso";
         }
         public async void Registrar(object sender, EventArgs _args)
         {
@@ -83,22 +96,48 @@ namespace TratoEspecial
                 C_Ind_Fisica _Usuario = new C_Ind_Fisica(nombre.Text, rfc.Text, fecha.Date, lugar.Text, giro.Text, tel.Text, cel.Text,
                     dom.Text, ext.Text, inte.Text, col.Text, ciu.Text, mun.Text, est.Text, cp.Text, correo.Text);
 
-                // mensaje.Text = _Usuario.Fn_GetInfo();
+                mensaje.Text = _Usuario.Fn_GetInfo();
 
-                //string jsonconv = JsonConvert.SerializeObject(_Usuario);
-                //Enviar(jsonconv);
+                HttpClient _cli = new HttpClient();
+                string jsonconv = JsonConvert.SerializeObject(_Usuario);
+                // create the request content and define Json  
+                var content = new StringContent(jsonconv, Encoding.UTF8, "application/json");
+                //  send a POST request  
+                var uri = "http://jsonplaceholder.typicode.com/posts";
+
+                var result = await _cli.PostAsync(uri, content);
+                if (result.IsSuccessStatusCode)
+                {
+                    // si se envia todo bien
+                }
+                // on error throw a exception  
+                result.EnsureSuccessStatusCode();
+
+                // handling the answer  
+                var resultString = await result.Content.ReadAsStringAsync();
+                var post = JsonConvert.DeserializeObject(resultString);
+
+
+                NavigationPage.SetHasNavigationBar(this, false);
+
+
                 //te encima una nueva pagina, pone solo el boton de regresar
-                await Navigation.PushAsync(new NavigationPage(new V_Informacion(1)));
+                await App.Current.MainPage.Navigation.PushAsync(new NavigationPage(new V_Informacion(1)) { Title = "Informacion" });
+                //await Navigation.PushAsync(new NavigationPage(new V_Informacion(1)));
             }
             else
             {
                 C_Ind_Moral _Usuario = new C_Ind_Moral(nombre.Text, rfc.Text, giro.Text, tel.Text,
                    dom.Text, ext.Text, inte.Text, col.Text, ciu.Text, mun.Text, est.Text, cp.Text, correo.Text);
-                //string jsonconv = JsonConvert.SerializeObject(_Usuario);
-                //Enviar(jsonconv);
-                // mensaje.Text = _Usuario.Fn_GetInfo();
-                //te encima una nueva pagina, pone solo el boton de regresar
-                await Navigation.PushAsync(new NavigationPage(new V_Informacion(2)));
+                string jsonconv = JsonConvert.SerializeObject(_Usuario);
+                Enviar(jsonconv);
+                mensaje.Text = _Usuario.Fn_GetInfo();
+
+                NavigationPage.SetHasNavigationBar(this, false);
+                // te encima una nueva pagina, pone solo el boton de regresar
+                
+                //await Navigation.PushAsync(new NavigationPage(new V_Informacion(2)));
+                await App.Current.MainPage.Navigation.PushAsync(new NavigationPage(new V_Informacion(1)) { Title = "Informacion" });
             }
         }
     }

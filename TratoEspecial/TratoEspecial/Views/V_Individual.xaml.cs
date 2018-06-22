@@ -52,7 +52,10 @@ namespace TratoEspecial.Views
             }
 
         }
-            
+        public void Fn_Back()
+        {
+            Application.Current.MainPage = new MainPage();
+        }
         private async void Enviar(string _json)
         {
             HttpClient _cli = new HttpClient();
